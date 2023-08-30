@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer utilities {
+  .w-65-p {
+    width: 65%;
+  }
+  .w-hrp{
+    width: 40%;
+  }
+  .hr-c {
+    width: 100%;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.40), rgba(255, 255, 255, 0));
+}
+
+  .bg-gray-cp {
+    background-color: rgba(182, 182, 182, 0.50);
+  }
+
+  .bg-black-cp {
+    background-color: rgba(0, 0, 0, 0.90);
+  }
+
+  .v-hr {
+    width: 1px;
+    height: 100%; /* Adjust the height as needed */
+    background-color: white; /* Change the color to your preference */
+  }
+
+  .b-r {
+    border-right: 0.5px solid rgba(255, 255, 255, 0.25);
+  }
+
+  .font-size-73p {
+    font-size: 100%;
+  }
+
+  .f250 {
+    font-size: 250%;
+  }
+
+  .h-10-p {
+    height: 10%;
+  }
+
+  .h-90-p {
+    height: 88%;
+  }
+}
+
+.cts{
+  font-size: 30%;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+.f-s-3 {
+  font-size: 3rem;
+}
+
+.f-s-2{
+  font-size: 2rem;
+}
+
+.color {
+  color: rgba(255, 255, 255, 0.222);
+}
