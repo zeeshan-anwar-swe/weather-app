@@ -11,11 +11,10 @@ export default function HomeRightPannel() {
 
   return (
     <div
-      className={`${
-        contextData.isDark
-          ? "border-white border-2 text-white"
-          : "bg-slate-800/50 text-white"
-      } w-hrp max-h-full rounded-md flex flex-col ml-6 max-md:ml-0 max-md:mt-4 max-md:w-11/12 max-md:h-auto`}
+      className={`${contextData.isDark
+        ? "border-white border-2 text-white"
+        : "bg-slate-800/50 text-white"
+        } w-hrp max-h-full rounded-md flex flex-col ml-6 max-md:ml-0 max-md:mt-4 max-md:w-11/12 max-md:h-auto`}
     >
       <p className="ml-4 mt-4 text-xl">5 DAYS FORECAST</p>
       <div className=" flex flex-col items-center justify-evenly h-full">
@@ -39,9 +38,8 @@ export default function HomeRightPannel() {
               </span>
             </div>
             <hr
-              className={`hr-c m-auto ${
-                index === filteredData.length - 1 && "hidden"
-              }`}
+              className={`hr-c m-auto ${index === filteredData.length - 1 && "hidden"
+                }`}
             />
           </div>
         ))}

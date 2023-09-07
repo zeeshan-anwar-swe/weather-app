@@ -22,10 +22,9 @@ export default function NavBar() {
 
   return (
     <div
-      className={`${
-        contextData.isDark ? "border-white border-2" : "bg-slate-800/50"
-      } w-1/12 h-100 rounded-md inline-flex flex-col items-center text-white 
-      max-md:w-full max-md:h-16 max-md:order-last max-md:flex-row max-md:rounded-none
+      className={`${contextData.isDark ? "border-white border-2" : "bg-slate-800/50"
+        } w-1/12 h-100 rounded-md inline-flex flex-col items-center text-white 
+      max-md:w-full max-md:fixed max-md:bottom-0 max-md:bg-slate-800 z-50 max-md:h-16 max-md:order-last max-md:flex-row max-md:rounded-none
       `}
     >
       <div className=" w-4/5 flex  justify-center h-1/5 mb-6 animate-pulse max-md:hidden">

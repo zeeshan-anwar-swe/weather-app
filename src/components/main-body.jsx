@@ -9,9 +9,9 @@ import { Page404 } from "../pages/404";
 
 export default function MainBody() {
   const contextData = useContext(data);
-  useEffect(() => {}, [contextData.isLoading]);
+  useEffect(() => { }, [contextData.isLoading]);
   return (
-    <div className="w-full h-full ml-6 overflow-hidden max-md:ml-0 ">
+    <div className="w-full h-full ml-6  overflow-hidden max-md:ml-0 ">
       <SearchBar />
       <div className="w-full h-90-p flex justify-between  max-md:overflow-scroll">
         {contextData.lSData ? (

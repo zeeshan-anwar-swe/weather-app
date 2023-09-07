@@ -4,7 +4,6 @@ import {
   DeviceThermostat,
   Air,
   WaterDrop,
-  Brightness7,
   Flag,
 } from "@mui/icons-material";
 
@@ -12,15 +11,14 @@ export default function AirConditions() {
   const contextData = useContext(data);
   return (
     <div
-      className={`${
-        contextData.isDark
-          ? " text-white border-white border-2"
-          : "bg-slate-800/50  text-gray-200"
-      } w-full rounded-md py-4 mb-1`}
+      className={`${contextData.isDark
+        ? " text-white border-white border-2"
+        : "bg-slate-800/50  text-gray-200"
+        } w-full rounded-md py-4`}
     >
       <div className="mx-4 flex justify-between">
         <p>Air Conditions</p>
-        
+
       </div>
 
       <div className="w-full flex justify-around py-2">

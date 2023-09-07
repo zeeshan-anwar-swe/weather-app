@@ -29,7 +29,7 @@ function App() {
       }}
     >
       <div
-        className={`w-screen h-screen p-5 0 flex justify-between backdrop-blur-lg max-md:flex-col max-md:p-0 0
+        className={`w-screen h-screen p-5 flex justify-between backdrop-blur-lg max-md:flex-col max-md:p-0 0
         ${isDark ? "bg-black-cp" : "bg-gray-cp"}
         
         `}

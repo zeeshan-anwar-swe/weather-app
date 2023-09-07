@@ -8,13 +8,13 @@ import { useLocation } from "react-router";
 
 export default function SearchBar() {
   const openWeatherApiKey = import.meta.env.VITE_OPEN_WEATHER_API_KEY;
-  const googleMapApiKey = import.meta.env.VITE_GOOGLE_MAP_API_KEY;
+  const openCageDataApiKey = import.meta.env.VITE_OPEN_CAGE_DATA_API_KEY;
 
   const location = useLocation();
   const currentRoute = location.pathname;
   const contextData = useContext(data);
 
-  const [city, setCity] = useState("Lahore");
+  const [city, setCity] = useState("");
   const [wD, setWD] = useState("");
 
   const getLocation = () => {
@@ -22,25 +22,14 @@ export default function SearchBar() {
       navigator.geolocation.getCurrentPosition(
         async (position) => {
           const { latitude, longitude } = position.coords;
-
+          console.log(latitude, longitude);
           try {
             contextData.setIsLoading(true);
-            const response = await axios.get(
-              `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${googleMapApiKey}`
-            );
-            const locationData = response.data.results
-            const requiredData = locationData[locationData.length - 3]
-            const locationName = requiredData.formatted_address.split(',')[0]
-
-            // const sublocalityLevel1Object = locationName.find((component) => {
-            //   return component.types.includes("sublocality_level_1");
-            // });
-            // const longName = sublocalityLevel1Object
-            //   ? sublocalityLevel1Object.long_name
-            //   : null;
-
+            const apiUrl = `https://api.opencagedata.com/geocode/v1/json?key=${openCageDataApiKey}&q=${latitude}+${longitude}&pretty=1`;
+            const res = await axios.get(apiUrl)
+            const cityName = res.data.results[0].components.city
             const response2 = await axios.get(
-              `https://api.openweathermap.org/data/2.5/forecast?q=${locationName}&appid=${openWeatherApiKey}`
+              `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${openWeatherApiKey}`
             );
             const weatherData = response2.data;
             localStorage.setItem("weatherData", JSON.stringify(weatherData));
@@ -52,11 +41,9 @@ export default function SearchBar() {
               : contextData.setShowAdd(true);
             contextData.setIsLoading(false);
           } catch (error) {
-            console.error("Error fetching location data:", error.message);
             toast.warn(
               error.code === 1
-                ? "Kindly Allow the location access."
-                : "Error fetching location data. Please try again later."
+              && "Kindly Allow the location access."
             );
             contextData.setIsLoading(false);
           }
@@ -179,7 +166,7 @@ export default function SearchBar() {
         />
         <button
           type="submit"
-          className={` w-24 h-4/5 rounded-full mr-7 text-white border-2 hover:bg-white hover:text-black transition-colors ease-in-out max-sm:text-sm`}
+          className={` w-24 p-2 rounded-full mr-7 max-md:p-2  text-white border-2 hover:bg-white hover:text-black transition-colors ease-in-out max-sm:text-sm`}
         >
           {currentRoute === "/" ? "Search" : "Add"}
         </button>
