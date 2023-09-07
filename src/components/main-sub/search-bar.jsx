@@ -28,8 +28,8 @@ export default function SearchBar() {
             const response = await axios.get(
               `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${googleMapApiKey}`
             );
-            const locationData =response.data.results
-            const requiredData =locationData[locationData.length-3]
+            const locationData = response.data.results
+            const requiredData = locationData[locationData.length - 3]
             const locationName = requiredData.formatted_address.split(',')[0]
 
             // const sublocalityLevel1Object = locationName.find((component) => {
@@ -118,7 +118,7 @@ export default function SearchBar() {
   const search = async (e) => {
     e.preventDefault();
     const keysInLoacalStorage = localStorage.getItem("citiesData");
-    const keysInLoacalStorageArr = keysInLoacalStorage.split(",");
+    const keysInLoacalStorageArr = keysInLoacalStorage ? keysInLoacalStorage.split(",") : []
     keysInLoacalStorageArr.includes(city)
       ? contextData.setShowAdd(false)
       : contextData.setShowAdd(true);
@@ -140,6 +140,7 @@ export default function SearchBar() {
       );
       contextData.setIsLoading(false);
     }
+
   };
 
   useEffect(() => {
@@ -151,11 +152,10 @@ export default function SearchBar() {
 
   return (
     <div
-      className={`  ${
-        contextData.isDark
-          ? `border-white border-2 text-white`
-          : `bg-slate-800/50`
-      } w-full h-10-p mb-4 rounded-md max-md:rounded-none`}
+      className={`  ${contextData.isDark
+        ? `border-white border-2 text-white`
+        : `bg-slate-800/50`
+        } w-full h-10-p mb-4 rounded-md max-md:rounded-none`}
     >
       <ToastContainer position="bottom-center" />
       <form
